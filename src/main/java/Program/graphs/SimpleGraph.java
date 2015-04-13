@@ -30,7 +30,7 @@ public class SimpleGraph<T> {
   }
 
   public void addEdge(Node<T> begin, Node<T> end) {
-    this.getSetForNode(begin).add(end);
+    this.getEdgestForNode(begin).add(end);
   }
 
   public void removeEdge(int begin, int end) {
@@ -38,10 +38,14 @@ public class SimpleGraph<T> {
   }
 
   public void removeEdge(Node<T> begin, Node<T> end) {
-    this.getSetForNode(begin).remove(end);
+    this.getEdgestForNode(begin).remove(end);
   }
 
-  private Set<Node<T>> getSetForNode(Node<T> node) {
+  public Set<Node<T>> getEdges(Node<T> node) {
+    return this.getEdgestForNode(node);
+  }
+
+  private Set<Node<T>> getEdgestForNode(Node<T> node) {
     if (!this.links.containsKey(node)) {
       this.links.put(node, new HashSet<>());
     }
